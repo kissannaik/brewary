@@ -1,7 +1,10 @@
 package com.kissan.brewery.web.controller.v2;
 
 import com.kissan.brewery.service.v2.BeerServiceV2;
+import com.kissan.brewery.service.v2.BeerServiceV2Impl;
 import com.kissan.brewery.web.model.v2.BeerDTO;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,7 @@ import java.util.UUID;
 
 @RequestMapping("/api/v2/beer")
 @RestController
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class BeerControllerV2 {
 
     private BeerServiceV2 beerServiceV2;
@@ -21,6 +25,8 @@ public class BeerControllerV2 {
 
     @GetMapping({"/{beerId}"})
     public ResponseEntity<BeerDTO> getBeer(@PathVariable("beerId") UUID beerId){
+        //beerServiceV2 = new BeerServiceV2Impl();
+
         BeerDTO beerDTO = beerServiceV2.getBeerById(beerId);
 
         HttpHeaders headers = new HttpHeaders();
