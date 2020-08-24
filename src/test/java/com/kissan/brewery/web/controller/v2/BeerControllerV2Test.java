@@ -1,6 +1,5 @@
 package com.kissan.brewery.web.controller.v2;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kissan.brewery.web.model.v2.BeerDTO;
 import org.junit.jupiter.api.Test;
